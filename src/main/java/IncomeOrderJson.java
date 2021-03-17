@@ -1,21 +1,21 @@
 public class IncomeOrderJson {
 
-    public int orderId;
-    public float amount;
+    public long orderId;
+    public double amount;
     public String currency;
     public String comment;
 
-    public int getOrderId() {
+    public long getOrderId() {
         return orderId;
     }
-    public void setOrderId(int orderId) {
+    public void setOrderId(long orderId) {
         this.orderId = orderId;
     }
 
-    public float getAmount() {
+    public double getAmount() {
         return amount;
     }
-    public void setAmount(float amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
