@@ -9,9 +9,10 @@ public class Main {
 
         ObjectMapper mapper = new ObjectMapper();
         ArrayList<IncomeOrderJson> list = new ArrayList<>();
+        File file = new File("src/main/resources/jsonUnlimint.json");
 
         try {
-            FileReader fr = new FileReader(file());
+            FileReader fr = new FileReader(file);
             BufferedReader reader = new BufferedReader(fr);
             String line = reader.readLine();
             while (line != null) {
@@ -34,7 +35,7 @@ public class Main {
             out.setId(list.get(i).getOrderId());
             out.setAmount(list.get(i).getAmount());
             out.setComment(list.get(i).getComment());
-            out.setFilename(file().getName());
+            out.setFilename(file.getName());
             outList.add(out);
         }
 
@@ -43,13 +44,5 @@ public class Main {
 //            mapper.writeValue(outputFile(), json);
             System.out.println(json);
         }
-    }
-
-    private static File file() {
-        return new File("src/main/resources/jsonUnlimint.json");
-    }
-    
-    private static File outputFile(){
-        return new File("src/main/resources/jsonUnlimintOut.json");
     }
 }
