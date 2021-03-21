@@ -2,14 +2,15 @@ public class OutputJson {
 
     long id;
     double amount;
+    String currency;
     String comment;
+    String filename;
+    long line;
+//    String result;
 
     public OutputJson() {
 
     }
-    String filename;
-//    String line;
-//    String result;
 
     public long getId() {
         return id;
@@ -25,6 +26,13 @@ public class OutputJson {
         this.amount = amount;
     }
 
+    public String getCurrency() {
+        return currency;
+    }
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
     public String getComment() {
         return comment;
     }
@@ -38,13 +46,13 @@ public class OutputJson {
     public void setFilename(String filename) {
         this.filename = filename;
     }
-//
-//    public String getLine() {
-//        return line;
-//    }
-//    public void setLine(String line) {
-//        this.line = line;
-//    }
+
+    public long getLine() {
+        return line;
+    }
+    public void setLine(long line) {
+        this.line = line;
+    }
 //
 //    public String getResult() {
 //        return result;
@@ -54,8 +62,8 @@ public class OutputJson {
 //    }
 
 
-    @Override
-    public String toString() {
-        return "id="+id+", amount="+amount+", comment="+comment+", filename="+filename;
-    }
+//    @Override
+//    public String toString() {
+//        return "id="+id+", amount="+amount+", comment="+comment+", filename="+filename+", line="+line;
+//    }
 }

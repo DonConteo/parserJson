@@ -23,10 +23,13 @@ public class JsonReader {
 
         try {
             String line = reader.readLine();
+            long orderLine = 1;
             while (line != null) {
                 IncomeOrder order = mapper.readValue(line, IncomeOrder.class);
                 order.setFileName(fileName);
+                order.setLine(orderLine);
                 list.add(order);
+                orderLine++;
                 line = reader.readLine();
             }
         } catch (

@@ -16,6 +16,7 @@ public class CsvReader {
 
         CSVReader reader = new CSVReader(new FileReader(file));
         String[] mapping;
+        long orderLine = 1;
 
         while ((mapping = reader.readNext()) != null) {
             IncomeOrder order = new IncomeOrder();
@@ -24,7 +25,9 @@ public class CsvReader {
             order.setCurrency(mapping[2]);
             order.setComment(mapping[3]);
             order.setFileName(fileName);
+            order.setLine(orderLine);
             list.add(order);
+            orderLine++;
         }
     }
 }

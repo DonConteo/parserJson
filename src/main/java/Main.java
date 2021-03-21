@@ -21,8 +21,10 @@ public class Main {
             OutputJson out = new OutputJson();
             out.setId(list.get(i).getOrderId());
             out.setAmount(list.get(i).getAmount());
+            out.setCurrency(list.get(i).getCurrency());
             out.setComment(list.get(i).getComment());
             out.setFilename(list.get(i).getFileName());
+            out.setLine(list.get(i).getLine());
             outList.add(out);
         }
 

@@ -5,6 +5,7 @@ public class IncomeOrder {
     public String currency;
     public String comment;
     public String fileName;
+    public long line;
 
     public long getOrderId() {
         return orderId;
@@ -39,5 +40,12 @@ public class IncomeOrder {
     }
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public long getLine() {
+        return line;
+    }
+    public void setLine(long line) {
+        this.line = line;
     }
 }
