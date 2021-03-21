@@ -8,29 +8,31 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        ArrayList<IncomeOrder> list = new ArrayList<>();
-        ArrayList<OutputJson> outList = new ArrayList<>();
+        ArrayList<File> inputFiles = new ArrayList<>();
+        ArrayList<IncomeOrder> inputOrders = new ArrayList<>();
+        ArrayList<OutputJson> outputOrders = new ArrayList<>();
 
-        File file1 = new File("src/main/resources/csvUnlimint.csv");
-        File file2 = new File("src/main/resources/jsonUnlimint.json");
+        inputFiles.add(new File("src/main/resources/csvUnlimint.csv"));
+        inputFiles.add(new File("src/main/resources/jsonUnlimint.json"));
 
-        list.addAll(readFile(file1));
-        list.addAll(readFile(file2));
-
-        for(int i = 0; i < list.size(); i++){
-            OutputJson out = new OutputJson();
-            out.setId(list.get(i).getOrderId());
-            out.setAmount(list.get(i).getAmount());
-            out.setCurrency(list.get(i).getCurrency());
-            out.setComment(list.get(i).getComment());
-            out.setFilename(list.get(i).getFileName());
-            out.setLine(list.get(i).getLine());
-            outList.add(out);
+        for(int i = 0; i < inputFiles.size(); i++){
+            inputOrders.addAll(readFile(inputFiles.get(i)));
         }
 
-        for(int i = 0; i < outList.size(); i++) {
-            String json = new ObjectMapper().writeValueAsString(outList.get(i));
-            System.out.println(json);
+        for(int i = 0; i < inputOrders.size(); i++){
+            OutputJson out = new OutputJson();
+            out.setId(inputOrders.get(i).getOrderId());
+            out.setAmount(inputOrders.get(i).getAmount());
+            out.setCurrency(inputOrders.get(i).getCurrency());
+            out.setComment(inputOrders.get(i).getComment());
+            out.setFilename(inputOrders.get(i).getFileName());
+            out.setLine(inputOrders.get(i).getLine());
+            outputOrders.add(out);
+        }
+
+        for(int i = 0; i < outputOrders.size(); i++) {
+            String output = new ObjectMapper().writeValueAsString(outputOrders.get(i));
+            System.out.println(output);
         }
     }
 
