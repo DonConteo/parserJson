@@ -1,9 +1,10 @@
-public class IncomeOrderJson {
+public class IncomeOrder {
 
     public long orderId;
     public double amount;
     public String currency;
     public String comment;
+    public String fileName;
 
     public long getOrderId() {
         return orderId;
@@ -31,5 +32,12 @@ public class IncomeOrderJson {
     }
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 }
