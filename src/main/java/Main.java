@@ -12,8 +12,8 @@ public class Main {
         ArrayList<IncomeOrder> inputOrders = new ArrayList<>();
         ArrayList<OutputJson> outputOrders = new ArrayList<>();
 
-        inputFiles.add(new File("src/main/resources/csvUnlimint.csv"));
-        inputFiles.add(new File("src/main/resources/jsonUnlimint.json"));
+        inputFiles.add(new File("src/main/resources/csvFile.csv"));
+        inputFiles.add(new File("src/main/resources/jsonFile.json"));
 
         for(int i = 0; i < inputFiles.size(); i++){
             inputOrders.addAll(readFile(inputFiles.get(i)));
@@ -39,9 +39,7 @@ public class Main {
     public static ArrayList<IncomeOrder> readFile(File file){
 
         ArrayList<IncomeOrder> list = new ArrayList<>();
-
-        String fileName = file.getName();
-        String fileExtension = FilenameUtils.getExtension(fileName);
+        String fileExtension = FilenameUtils.getExtension(String.valueOf(file));
 
         if (fileExtension.equals("json")){
             JsonReader reader = new JsonReader();
