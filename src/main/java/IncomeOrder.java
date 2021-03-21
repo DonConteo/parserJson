@@ -1,3 +1,4 @@
+//Класс объекта во входящем файле
 public class IncomeOrder {
 
     public long orderId;

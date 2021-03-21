@@ -8,7 +8,7 @@ public class JsonReader {
     ObjectMapper mapper = new ObjectMapper();
     ArrayList<IncomeOrder> list = new ArrayList<>();
 
-    public void readJson(File file) {
+    public void readJson(File file) {           //Создание коллекции объектов из файла в формате json
 
         String fileName = file.getName();
 

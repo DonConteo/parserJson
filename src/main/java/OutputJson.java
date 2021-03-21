@@ -1,3 +1,4 @@
+//Класс объекта для вывода в консоль
 public class OutputJson {
 
     long id;
