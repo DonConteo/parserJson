@@ -2,21 +2,23 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class JsonWriter {
 
-        ArrayList<OutputJson> outputOrders = new ArrayList<>();
+        List<Order> outputOrders = new ArrayList<>();
 
-    public void writeFile(ArrayList<IncomeOrder> list){         //Создание коллекции объектов в нужном формате для вывода в консоль
+    public void writeFile(List<Order> list){         //Создание коллекции объектов в нужном формате для вывода в консоль
 
         for(int i = 0; i < list.size(); i++) {
-                OutputJson out = new OutputJson();
-                out.setId(list.get(i).getOrderId());
+                Order out = new Order();
+                out.setOrderId(list.get(i).getOrderId());
                 out.setAmount(list.get(i).getAmount());
                 out.setCurrency(list.get(i).getCurrency());
                 out.setComment(list.get(i).getComment());
-                out.setFilename(list.get(i).getFileName());
+                out.setFileName(list.get(i).getFileName());
                 out.setLine(list.get(i).getLine());
+                out.setResult(list.get(i).getResult());
                 outputOrders.add(out);
         }
 

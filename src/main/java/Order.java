@@ -1,5 +1,5 @@
 //Класс объекта во входящем файле
-public class IncomeOrder {
+public class Order {
 
     public long orderId;
     public double amount;
@@ -7,6 +7,9 @@ public class IncomeOrder {
     public String comment;
     public String fileName;
     public long line;
+    public String result;
+
+
 
     public long getOrderId() {
         return orderId;
@@ -48,5 +51,12 @@ public class IncomeOrder {
     }
     public void setLine(long line) {
         this.line = line;
+    }
+
+    public String getResult() {
+        return result;
+    }
+    public void setResult(String result) {
+        this.result = result;
     }
 }
