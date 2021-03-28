@@ -1,15 +1,38 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opencsv.CSVReader;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CsvReader {
+public class Reader {
 
+    ObjectMapper mapper = new ObjectMapper();
     List<Order> list = new ArrayList<>();
     String result;
+
+    public void readJson(File file) throws FileNotFoundException {           //Создание коллекции объектов из файла в формате json
+
+        String fileName = file.getName();
+        FileReader fr = new FileReader(file);
+        BufferedReader reader = new BufferedReader(fr);
+
+        try {
+            String line = reader.readLine();
+            long orderLine = 1;
+            while (line != null) {
+                Order order = checkOrder(mapper.readValue(line, Order.class));
+                order.setFileName(fileName);
+                order.setLine(orderLine);
+                if(result == null){order.setResult("OK");}
+                list.add(order);
+                orderLine++;
+                line = reader.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void readCsv(File file) throws IOException {         //Создание коллекции объектов из файла в формате csv
 
@@ -31,6 +54,8 @@ public class CsvReader {
         }
     }
 
+
+    //Проверки
     private long checkId(String str){
         long l = 0;
         try {
@@ -66,4 +91,18 @@ public class CsvReader {
         }
         return str;
     }
+
+    private Order checkOrder(Order order){
+        if(order.getOrderId() == 0){
+            result += "ID is null! ";
+        }
+        if(order.getCurrency() == null){
+            result += "Currency is null! ";
+        }
+        if(order.getComment() == null){
+            result += "Unknown payment! ";
+        }
+        return order;
+    }
 }
+

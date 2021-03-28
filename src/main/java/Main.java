@@ -14,8 +14,7 @@ public class Main {
         inputFiles.add(new File("src/main/resources/csvFile.csv"));
         inputFiles.add(new File("src/main/resources/jsonFile.json"));
 
-     //Чтение каждого файла из коллекции входящих фалов, создание объекта и добавление его в коллекцию входящих заказов
-        for (File f : inputFiles){
+        for (File f : inputFiles){          //Чтение каждого файла из коллекции входящих фалов, создание объекта и добавление его в коллекцию входящих заказов
             try {
                 inputOrders.addAll(readFile(f));
             }
@@ -29,15 +28,14 @@ public class Main {
     public static List<Order> readFile(File file) throws FileNotFoundException {      //Метод для чтения файла с расширениями json/csv
 
         List<Order> list = new ArrayList<>();
+        Reader reader = new Reader();
 
         switch (FilenameUtils.getExtension(String.valueOf(file)).toLowerCase()){
             case "json" -> {
-                JsonReader reader = new JsonReader();
                 reader.readJson(file);
                 list.addAll(reader.list);
             }
             case "csv" -> {
-                CsvReader reader = new CsvReader();
                 try {
                     reader.readCsv(file);
                 } catch (IOException e) {
